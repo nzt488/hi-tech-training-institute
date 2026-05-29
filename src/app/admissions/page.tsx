@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ChevronRight, ChevronLeft, CheckCircle, GraduationCap } from 'lucide-react';
 import { courses } from '@/data/courses';
 
-export default function AdmissionsPage() {
+function AdmissionsContent() {
   const searchParams = useSearchParams();
   const defaultCourse = searchParams?.get('course') || '';
 
@@ -335,5 +335,13 @@ export default function AdmissionsPage() {
         </div>
       </div>
     </div>
+  );
+}
+
+export default function AdmissionsPage() {
+  return (
+    <Suspense fallback={<div>Loading...</div>}>
+      <AdmissionsContent />
+    </Suspense>
   );
 }
